@@ -17,7 +17,6 @@ import subprocess
 import tensorflow as tf
 import keras
 import bz2
-from deepface.commons import distance
 from mtcnn import MTCNN #0.1.0
 
 def initialize_detector(detector_backend):
@@ -278,6 +277,15 @@ def detect_face(img, detector_backend = 'opencv', grayscale = False, enforce_det
 		detectors = ['opencv', 'ssd', 'dlib', 'mtcnn']
 		raise ValueError("Valid backends are ", detectors," but you passed ", detector_backend)
 
+
+def findEuclideanDistance(source_representation, test_representation):
+    euclidean_distance = source_representation - test_representation
+    euclidean_distance = np.sum(np.multiply(euclidean_distance, euclidean_distance))
+    euclidean_distance = np.sqrt(euclidean_distance)
+    return euclidean_distance
+
+
+
 def alignment_procedure(img, left_eye, right_eye):
 		
 	#this function aligns given face in img based on left and right eye coordinates
@@ -298,9 +306,9 @@ def alignment_procedure(img, left_eye, right_eye):
 	#-----------------------
 	#find length of triangle edges
 	
-	a = distance.findEuclideanDistance(np.array(left_eye), np.array(point_3rd))
-	b = distance.findEuclideanDistance(np.array(right_eye), np.array(point_3rd))
-	c = distance.findEuclideanDistance(np.array(right_eye), np.array(left_eye))
+	a = findEuclideanDistance(np.array(left_eye), np.array(point_3rd))
+	b = findEuclideanDistance(np.array(right_eye), np.array(point_3rd))
+	c = findEuclideanDistance(np.array(right_eye), np.array(left_eye))
 	
 	#-----------------------
 	
