@@ -1,0 +1,13 @@
+face-recognition
+flask
+gunicorn
+keras
+matplotlib
+numpy
+pandas
+mtcnn
+opencv-python
+pathlib
+gdown
+urllib3
+Keras-Preprocessing

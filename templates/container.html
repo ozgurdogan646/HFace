@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>HFaceApp</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:900i&display=swap');
+        body {
+            background: yellow;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        #openingHeader {
+            position: absolute;
+            top: 11%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 50px;
+            letter-spacing: 0.1em;
+            -webkit-text-fill-color: transparent;
+            -webkit-text-stroke-width: 3px;
+            -webkit-text-stroke-color: white;
+            text-shadow: 8px 8px #ff1f8f, 20px 20px #000000;
+        }
+        
+        #imageForm {
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        #credits {
+            position: absolute;
+            top: 88%;
+            left: 43%;
+            font-size: 10px;
+        }
+        
+        #credits2 {
+            position: absolute;
+            top: 89%;
+            left: 43%;
+            font-size: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="openingHeader">Welcome to HFace App
+        <h1>
+            <div id="imageForm">
+                <div>
+                    <img src="{{ url_for('display_image', filename=filename) }} " width="500" height="400">
+                </div>
+                <form id="form" method="post" action="/" enctype="multipart/form-data">
+                    <dl>
+                        <p>
+                            <input type="file" name="file" autocomplete="off" required>
+                        </p>
+                    </dl>
+                    <p>
+                        <input type="submit" value="Submit">
+                    </p>
+                </form>
+            </div>
+            <p id="credits">Created by Ozgur Dogan and Oguzhan Sahin</p>
+            <p id="credits2">All Rights Reserved</p>
+</body>
+
+</html>
